@@ -1,0 +1,5 @@
+/* The landing hero's tagline holds the author block: authors, group and
+   university, one per line, centred in the hero. DocumenterLandingPage renders the tagline as plain
+   escaped text, so its newlines (a YAML literal block in index.md's front
+   matter) are kept by pre-line. */
+.landing-tagline { white-space: pre-line; text-align: center; }
