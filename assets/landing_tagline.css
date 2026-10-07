@@ -19,3 +19,11 @@
     #landing .landing-name { font-size: 1.6rem !important; }
     #landing .landing-title { font-size: 2rem !important; }
 }
+/* pseudocode.js (the method's algorithm block): ink and rules in the page's
+   text colour, so it follows the light and dark themes with no background. */
+.ps-root, .ps-root .ps-algorithm, .ps-root .ps-algorithm.with-caption > .ps-line:first-child,
+.ps-root .ps-algorithmic { color: inherit; border-color: currentColor !important; background: transparent; }
+.ps-root { font-size: 1rem; }
+.ps-root .ps-line { margin: 0 !important; line-height: 1.7; }
+.ps-root p { margin: 0 !important; }
+.ps-root .ps-comment { margin-left: 1.5em; opacity: 0.85; }
