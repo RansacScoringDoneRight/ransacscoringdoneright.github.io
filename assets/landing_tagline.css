@@ -9,3 +9,13 @@
 #landing .landing-actions { justify-content: center; }
 /* The name is gradient text in a box as wide as the text: centre the box. */
 #landing .landing-name { width: fit-content; margin-left: auto !important; margin-right: auto !important; }
+/* One size for every project page. The plugin sizes the name from its own
+   character count (so each site differed) and the subtitle from the column
+   width; fix both, and let a long name wrap instead of shrinking. Smaller on
+   phones only. */
+#landing .landing-name { font-size: 2rem !important; white-space: normal !important; line-height: 1.2; text-wrap: balance; text-align: center; }
+#landing .landing-title { font-size: 2.75rem !important; text-wrap: balance; }
+@media (max-width: 600px) {
+    #landing .landing-name { font-size: 1.6rem !important; }
+    #landing .landing-title { font-size: 2rem !important; }
+}
