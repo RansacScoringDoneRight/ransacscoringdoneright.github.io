@@ -7,12 +7,21 @@
   var PSEUDO = "https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min";
   var PSEUDO_CSS = "https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css";
 
-  // require.js is fetched from a CDN and may arrive after this script runs:
-  // wait for it (up to 20 s) instead of giving up.
+  // require.js is fetched from a CDN, and Documenter registers the "katex" path
+  // only once its own documenter.js has run. Requesting "katex" before that
+  // makes RequireJS fetch assets/katex.js (404) and mark the module failed,
+  // which also breaks Documenter's math rendering. So wait (up to 20 s) until
+  // the path is registered before asking for anything.
   var tries = 0;
+  function katexRegistered() {
+    try {
+      var cfg = requirejs.s.contexts._.config;
+      return !!(cfg && cfg.paths && cfg.paths.katex);
+    } catch (e) { return false; }
+  }
   function start() {
     if (!document.querySelector("pre.pseudocode")) return;
-    if (typeof requirejs === "undefined") {
+    if (typeof requirejs === "undefined" || !katexRegistered()) {
       if (tries++ < 200) setTimeout(start, 100);
       return;
     }
