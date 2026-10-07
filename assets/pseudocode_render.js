@@ -7,8 +7,15 @@
   var PSEUDO = "https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min";
   var PSEUDO_CSS = "https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css";
 
+  // require.js is fetched from a CDN and may arrive after this script runs:
+  // wait for it (up to 20 s) instead of giving up.
+  var tries = 0;
   function start() {
-    if (!document.querySelector("pre.pseudocode") || typeof requirejs === "undefined") return;
+    if (!document.querySelector("pre.pseudocode")) return;
+    if (typeof requirejs === "undefined") {
+      if (tries++ < 200) setTimeout(start, 100);
+      return;
+    }
     var l = document.createElement("link");
     l.rel = "stylesheet"; l.href = PSEUDO_CSS; document.head.appendChild(l);
     requirejs.config({ paths: { pseudocode: PSEUDO } });
