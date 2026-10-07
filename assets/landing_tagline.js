@@ -7,7 +7,8 @@
       "Felix Seegräber": "https://www.uni-kiel.de/en/person/seegraeber-felix-68860",
       "Kevin Köser": "https://www.uni-kiel.de/en/person/koeser-kevin-58375",
       "Marine Data Science": "https://www.marine-ai.de/",
-      "Kiel University": "https://www.uni-kiel.de/en/"
+      "Kiel University": "https://www.uni-kiel.de/en/",
+      "NeurIPS 2026": "https://neurips.cc/Conferences/2026"
   };
   function linkify() {
     var el = document.querySelector(".landing-tagline");
