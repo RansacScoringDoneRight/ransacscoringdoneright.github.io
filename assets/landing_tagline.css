@@ -1,5 +1,11 @@
-/* The landing hero's tagline holds the author block: authors, group and
-   university, one per line, centred in the hero. DocumenterLandingPage renders the tagline as plain
+/* The landing hero, centred: project name, subtitle, the author block and the
+   buttons. Scoped to #landing like DocumenterLandingPage's own rules, which
+   use the id and would otherwise win. The tagline holds the author block
+   (authors, group, university, one per line); the plugin renders it as plain
    escaped text, so its newlines (a YAML literal block in index.md's front
-   matter) are kept by pre-line. */
-.landing-tagline { white-space: pre-line; text-align: center; }
+   matter) are kept by pre-line, and landing_tagline.js adds the links. */
+#landing .landing-title, #landing .landing-tagline { text-align: center; }
+#landing .landing-tagline { white-space: pre-line; }
+#landing .landing-actions { justify-content: center; }
+/* The name is gradient text in a box as wide as the text: centre the box. */
+#landing .landing-name { width: fit-content; margin-left: auto !important; margin-right: auto !important; }
